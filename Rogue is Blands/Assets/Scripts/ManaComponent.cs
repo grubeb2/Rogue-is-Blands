@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class ManaComponent : MonoBehaviour
 {
-
-    private PrimaryStats primaryStats;
-
-    public double Mana;
+    public double MaxMana;
     public double ManaRegen;
 
-    void calculate()
-    {
-        Mana = primaryStats.Intellect * 2 + 3;
-        ManaRegen = 1 + (primaryStats.Faith + Mathf.Sqrt(primaryStats.Intellect)) / 10.0;
-    }
-
-    void Start()
-    {
-        primaryStats = GetComponent<PrimaryStats>();
-    }
+    public double Mana;
 
     void Update()
     {
-        Mana += ManaRegen * Time.deltaTime;
+        if (Mana < MaxMana)
+        {
+            Mana += ManaRegen * Time.deltaTime;
+        }
+        else if (Mana > MaxMana)
+        {
+            Mana = MaxMana;
+        }
     }
 }

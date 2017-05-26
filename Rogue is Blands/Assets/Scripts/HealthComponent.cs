@@ -4,30 +4,25 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-
-    private PrimaryStats primaryStats;
+    public double MaxHP;
+    public double HPRegen;
 
     public double HP;
-    public double HPRegen;
 
     public bool isAlive()
     {
         return 0 < HP;
     }
 
-    void calculate()
-    {
-        HP = primaryStats.Vitality * 2 + 3;
-        HPRegen = primaryStats.Faith / 10.0;
-    }
-
-    void Start()
-    {
-        primaryStats = GetComponent<PrimaryStats>();
-    }
-
     void Update()
     {
-        HP += HPRegen * Time.deltaTime;
+        if (HP < MaxHP)
+        {
+            HP += HPRegen * Time.deltaTime;
+        }
+        else if (HP > MaxHP)
+        {
+            HP = MaxHP;
+        }
     }
 }
