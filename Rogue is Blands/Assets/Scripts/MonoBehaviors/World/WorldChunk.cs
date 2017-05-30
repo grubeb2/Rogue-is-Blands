@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentComponent : MonoBehaviour
-{
-
+public class WorldChunk : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

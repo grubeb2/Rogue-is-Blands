@@ -7,6 +7,8 @@ public class HealthComponent : MonoBehaviour
     public double MaxHP;
     public double HPRegen;
 
+    public bool Regen;
+
     public double HP;
 
     public bool isAlive()
@@ -16,13 +18,16 @@ public class HealthComponent : MonoBehaviour
 
     void Update()
     {
-        if (HP < MaxHP)
+        if (Regen)
         {
-            HP += HPRegen * Time.deltaTime;
-        }
-        else if (HP > MaxHP)
-        {
-            HP = MaxHP;
+            if (HP < MaxHP)
+            {
+                HP += HPRegen * Time.deltaTime;
+            }
+            else if (HP > MaxHP)
+            {
+                HP = MaxHP;
+            }
         }
     }
 }
